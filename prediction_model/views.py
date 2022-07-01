@@ -3,6 +3,11 @@ import pandas as pd
 import numpy as np
 from sklearn.utils import shuffle
 import pickle
+import os
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # Create your views here.
 def home(request):
     return render(request, 'index.html')
@@ -10,7 +15,8 @@ def home(request):
 def predict(request):
     
     # Reading disease dataset
-    disease_df = pd.read_csv(r"E:\Disease_detection\dataset.csv")
+    path = BASE_DIR + '/dataset.csv'
+    disease_df = pd.read_csv(path)
     disease_df = shuffle(disease_df,random_state=42)  # shuffling the dataset to see all values randomly
     # removing ('_') underscore in the text to maintain equality
     for col in disease_df.columns:
@@ -25,7 +31,8 @@ def predict(request):
     # Replacing the Nan values with 0    
     disease_df = disease_df.fillna(0)
     # Reading symptom weights dataset
-    severity_df = pd.read_csv(r"E:\Disease_detection\Symptom-severity.csv")
+    path1 = BASE_DIR + '/Symptom-severity.csv'
+    severity_df = pd.read_csv(path1)
     # removing ('_') underscore in the text to maintain equality
     severity_df['Symptom'] = severity_df['Symptom'].str.replace('_',' ')
     # labeling the weights according to severity dataset
@@ -95,9 +102,10 @@ def predict(request):
 from .models import DesandPrec
  
 def desc_prec(request):
-       
-    des_df = pd.read_csv(r"E:\Disease_detection\symptom_Description.csv")
-    pec_df = pd.read_csv(r"E:\Disease_detection\symptom_precaution.csv")
+    path1 = BASE_DIR + '/symptom_Description.csv'   
+    path2 = BASE_DIR + '/symptom_precaution.csv' 
+    des_df = pd.read_csv(path1)
+    pec_df = pd.read_csv(path2)
     
     for i in range(len(des_df["Disease"])):
         if des_df["Disease"][i] == 'Diabetes':
