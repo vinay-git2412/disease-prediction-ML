@@ -14,7 +14,7 @@
   </header>
   
   <div class="container">
-    <form class="form" action="predict" method="POST">
+    <form class="form" action="predict/" method="post">
       {% csrf_token %}
       <div class="form__group">
         <label for="Symptom1">Symptom-1</label>
@@ -844,7 +844,7 @@
           <option value="prognosis">prognosis</option>
        </select>
       </div>
-
+      {% csrf_token %}
       <button type="submit"class="btn btn-default">Predict</button>
 
       <div class="gonnaBeOnTheBottom">

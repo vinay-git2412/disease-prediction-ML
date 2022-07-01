@@ -14,11 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.urls import path,include
+from django.views.generic.base import RedirectView
 from prediction_model import views
 urlpatterns = [
     path('', views.home, name = 'home'),
-    path('predict', views.predict, name = 'predict'),
-    path('descpre', views.desc_prec, name = 'descpre'),
+    path('predict/', views.predict, name = 'predict'),
+    path('predict/descpre/', views.desc_prec, name = 'descpre'),
+    path("favicon.ico",RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),),
     path('admin/', admin.site.urls),
 ]
+
+

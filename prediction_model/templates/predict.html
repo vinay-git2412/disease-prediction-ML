@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom dropdown with search</title>
+  <title>Disease Prediction</title>
   <link rel="stylesheet" href="{% static "style.css" %}"">
 </head>
 
@@ -16,7 +16,7 @@
 
   <div class="container">
     <h1 class='text-center text-primary'>The Predicted Disease is  <b>{{ classification_result }}</b></h1>
-    <form action="descpre" method="post">
+    <form action="descpre/" method="post">
       {% csrf_token %}
       <button type="submit"class="center btn-default">Description&Precautions</button>
     </form>
