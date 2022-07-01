@@ -1,0 +1,37 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom dropdown with search</title>
+  <link rel="stylesheet" href="{% static "style.css" %}"">
+</head>
+
+
+<body>
+  <header>
+    <h1>Disease Prediction using ML</h1>
+  </header>
+
+  <div class="container">
+    <h1 class='text-center text-primary'>The Predicted Disease is  <b>{{ descpre.classification }}</b></h1>
+    <button type="submit"class="center btn-default">Description&Precautions</button>
+  </div>
+  <div class="container">
+    <h3 class='text-center text-primary'>Description:</h3>
+    <p>{{descpre.Description}}</p>
+
+    <h3 class='text-center text-primary'>Precautions:</h3>
+    <p><b>1.</b>{{descpre.Precaution_1}}</p>
+    <p><b>2.</b>{{descpre.Precaution_2}}</p>
+    <p><b>3.</b>{{descpre.Precaution_3}}</p>
+    <p><b>4.</b>{{descpre.Precaution_4}}</p>
+
+</div>
+  <script src="{% static "dropdown.js" %}""></script>
+</body>
+
+</html>

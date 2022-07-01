@@ -9,3 +9,12 @@ class diseasePrediction(models.Model):
     Symptom5 = models.CharField(max_length=20)
     Symptom6 = models.CharField(max_length=20)
     classification = models.CharField(max_length=20)
+    
+    
+class DesandPrec(models.Model):
+    Description = models.TextField(max_length=300)
+    Precaution_1 =  models.TextField(max_length=300)
+    Precaution_2 =  models.TextField(max_length=300)
+    Precaution_3 =  models.TextField(max_length=300)
+    Precaution_4 =  models.TextField(max_length=300)
+    classification = models.CharField(max_length=20)

@@ -19,5 +19,6 @@ from prediction_model import views
 urlpatterns = [
     path('', views.home, name = 'home'),
     path('predict', views.predict, name = 'predict'),
+    path('descpre', views.desc_prec, name = 'descpre'),
     path('admin/', admin.site.urls),
 ]

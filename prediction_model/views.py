@@ -1,15 +1,14 @@
 from django.shortcuts import render
-
+import pandas as pd
+import numpy as np
+from sklearn.utils import shuffle
+import pickle
 # Create your views here.
 def home(request):
     return render(request, 'index.html')
 
 def predict(request):
-    # Importing Libraries
-    import pandas as pd
-    import numpy as np
-    from sklearn.utils import shuffle
-    import pickle
+    
     # Reading disease dataset
     disease_df = pd.read_csv(r"E:\Disease_detection\dataset.csv")
     disease_df = shuffle(disease_df,random_state=42)  # shuffling the dataset to see all values randomly
@@ -85,7 +84,43 @@ def predict(request):
         return render(request, 'index.html')    
     classification = predd(S1,S2,S3,S4,S5,S6)
     
+    # creating a global function to return classification value
+    global val
+    def val():
+        return classification
+    
     return render(request, 'predict.html', {'classification_result': classification})
     
+
+from .models import DesandPrec
+ 
+def desc_prec(request):
+       
+    des_df = pd.read_csv(r"E:\Disease_detection\symptom_Description.csv")
+    pec_df = pd.read_csv(r"E:\Disease_detection\symptom_precaution.csv")
     
+    for i in range(len(des_df["Disease"])):
+        if des_df["Disease"][i] == 'Diabetes':
+            des_df["Disease"][i] = 'Diabetes '
+        elif des_df["Disease"][i] == 'Hypertension':
+            des_df["Disease"][i] = 'Hypertension '
+        elif des_df["Disease"][i] == 'Dimorphic hemorrhoids(piles)':
+            des_df["Disease"][i] = 'Dimorphic hemmorhoids(piles)'   
     
+    com_df = des_df.merge(pec_df, how='right')
+    
+    disease = val()  #classification
+    
+    sep_df = com_df[com_df['Disease'] == disease]
+    ind = com_df[com_df['Disease']==disease].index.values
+    ind = ind[0]
+    
+    descpre = DesandPrec()
+    
+    descpre.Description = sep_df['Description'][ind]
+    descpre.Precaution_1 = sep_df['Precaution_1'][ind]
+    descpre.Precaution_2 = sep_df['Precaution_2'][ind]
+    descpre.Precaution_3 = sep_df['Precaution_3'][ind]
+    descpre.Precaution_4 = sep_df['Precaution_4'][ind]     
+    descpre.classification = disease
+    return render(request,'desc.html',{'descpre':descpre})    #{{descpre.Description}} use like this while mentioning in html

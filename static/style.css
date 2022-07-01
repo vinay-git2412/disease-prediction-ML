@@ -37,6 +37,7 @@ header {
   max-width: 600px;
   margin: 0 auto;
   padding-bottom: 50px;
+  align-items: center;
 }
 
 .form {
@@ -145,4 +146,24 @@ header {
   border: 0;
   outline: 0;
   cursor: pointer;
+}
+.center {
+  display: inline-flex;
+  align-items: stretch;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
 }
