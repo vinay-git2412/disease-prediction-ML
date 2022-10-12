@@ -132,4 +132,3 @@ def desc_prec(request):
     descpre.Precaution_4 = sep_df['Precaution_4'][ind]     
     descpre.classification = disease
     return render(request,'desc.html',{'descpre':descpre})    #{{descpre.Description}} use like this while mentioning in html
-
