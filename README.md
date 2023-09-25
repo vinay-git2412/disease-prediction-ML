@@ -7,12 +7,11 @@ Symptom-severity --> This dataset contains the weights of each symptom. so by th
 Disease_description --> This dataset contains the description of each disease. so that we can display the description of disease in our follow up page in our application.
 Disease_precaution --> This is similar to previous dataset and will be displayed in follow up page.
 
-
-- Front-end:
+## Front-end:
 In home page, we will have 6 drop down options to enter symptoms and then we will have a predict option to run our Ml model in backend and predict the disease,after clicking predict you will be redirected to next page displaying disease name and they will be separate option to check disease_desc as well as disease_precaution, which will redirect to new page.
 For working of frontend, i have used HTML,CSS,JS.
 
-- Backend:
+## Backend:
 For working of backend, i had used Django python framework.
 
 Intially we will create models for predict,desc and precautions options.
