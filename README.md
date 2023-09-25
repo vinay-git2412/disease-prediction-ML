@@ -2,10 +2,10 @@
 
 This is a disease prediction web application. In which we use disease dataset,symptom-severity dataset,disease_description,disease_precaution datasets for developing machine learning model later on it can be used in our web application
 
-Disease Dataset --> This dataset contains symptoms as well as disease name in a dataframe 
-Symptom-severity --> This dataset contains the weights of each symptom. so by this dataset we can assign weights for disease dataset, because the disease dataset is in charcater format. we are using this to avoid "one-hot encoding".
-Disease_description --> This dataset contains the description of each disease. so that we can display the description of disease in our follow up page in our application.
-Disease_precaution --> This is similar to previous dataset and will be displayed in follow up page.
+- Disease Dataset --> This dataset contains symptoms as well as disease name in a dataframe 
+- Symptom-severity --> This dataset contains the weights of each symptom. so by this dataset we can assign weights for disease dataset, because the disease dataset is in charcater format. we are using this to avoid "one-hot encoding".
+- Disease_description --> This dataset contains the description of each disease. so that we can display the description of disease in our follow up page in our application.
+- Disease_precaution --> This is similar to previous dataset and will be displayed in follow up page.
 
 ## Front-end:
 In home page, we will have 6 drop down options to enter symptoms and then we will have a predict option to run our Ml model in backend and predict the disease,after clicking predict you will be redirected to next page displaying disease name and they will be separate option to check disease_desc as well as disease_precaution, which will redirect to new page.
